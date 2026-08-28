@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EGG — Eshetu Gudeta Geresu Educational Consultancy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#FAF6EC;
+    --card:#F1EAD9;
+    --ink:#1B1A15;
+    --ink-soft:#4A4838;
+    --forest:#0F3D2E;
+    --forest-light:#1B5E42;
+    --gold:#C6952F;
+    --gold-soft:#E4C77A;
+    --clay:#A23B27;
+    --line: rgba(27,26,21,0.14);
+    --radius: 2px;
+    --shadow: 0 18px 40px -22px rgba(15,61,46,0.35);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces', serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    margin:0;
+    color:var(--forest);
+  }
+
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+
+  .wrap{
+    max-width:1140px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    color:var(--clay);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:18px; height:1px;
+    background:var(--clay);
+    display:inline-block;
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(250,246,236,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:16px 28px;
+    max-width:1140px;
+    margin:0 auto;
+  }
+  .brand{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    text-decoration:none;
+  }
+  .brand-mark{
+    width:44px; height:44px;
+    border-radius:50%;
+    border:1.5px solid var(--forest);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:15px;
+    color:var(--forest);
+    flex-shrink:0;
+  }
+  .brand-text{display:flex; flex-direction:column; line-height:1.15;}
+  .brand-text strong{font-family:'Fraunces', serif; font-size:19px; color:var(--ink); font-weight:600;}
+  .brand-text span{font-family:'JetBrains Mono', monospace; font-size:10.5px; letter-spacing:0.05em; color:var(--ink-soft); text-transform:uppercase;}
+
+  nav.links{display:flex; gap:32px; align-items:center;}
+  nav.links a{
+    text-decoration:none;
+    font-size:14.5px;
+    font-weight:500;
+    color:var(--ink);
+    position:relative;
+    padding:4px 0;
+  }
+  nav.links a::after{
+    content:"";
+    position:absolute; left:0; bottom:0;
+    width:0; height:1.5px;
+    background:var(--clay);
+    transition:width .25s ease;
+  }
+  nav.links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--forest);
+    color:var(--paper) !important;
+    padding:10px 18px !important;
+    border-radius:var(--radius);
+    font-weight:600 !important;
+  }
+  .nav-cta::after{display:none;}
+
+  .hamburger{display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:6px;}
+  .hamburger span{width:24px; height:2px; background:var(--ink);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:88px 0 96px;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse at 85% -10%, rgba(198,149,47,0.16), transparent 55%),
+      var(--paper);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap:56px;
+    align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(38px, 5vw, 60px);
+    line-height:1.04;
+    color:var(--ink);
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--forest);
+  }
+  .hero p.lead{
+    margin-top:22px;
+    font-size:18px;
+    color:var(--ink-soft);
+    max-width:46ch;
+  }
+  .hero-cta{
+    margin-top:34px;
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
+    padding:14px 24px;
+    border-radius:var(--radius);
+    text-decoration:none;
+    font-weight:600;
+    font-size:14.5px;
+    border:1.5px solid transparent;
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-primary{
+    background:var(--forest);
+    color:var(--paper);
+    box-shadow:var(--shadow);
+  }
+  .btn-outline{
+    border-color:var(--ink);
+    color:var(--ink);
+  }
+
+  /* seal graphic */
+  .seal-wrap{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+  }
+  .seal{
+    width:280px; height:280px;
+    animation:spin-slow 40s linear infinite;
+  }
+  @keyframes spin-slow{ to{ transform:rotate(360deg); } }
+  .seal-center{
+    position:absolute;
+    top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+    animation:none;
+  }
+  .seal-center strong{
+    display:block;
+    font-family:'Fraunces', serif;
+    font-size:44px;
+    color:var(--forest);
+    font-weight:700;
+  }
+  .seal-center span{
+    font-family:'JetBrains Mono', monospace;
+    font-size:9.5px;
+    letter-spacing:0.12em;
+    color:var(--clay);
+    text-transform:uppercase;
+  }
+
+  .hero-footnote{
+    margin-top:44px;
+    display:flex;
+    gap:28px;
+    flex-wrap:wrap;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--ink-soft);
+    letter-spacing:0.02em;
+    border-top:1px solid var(--line);
+    padding-top:18px;
+  }
+  .hero-footnote strong{color:var(--forest); display:block; font-family:'Work Sans',sans-serif; font-weight:600; font-size:13px;}
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{padding:96px 0;}
+  .section-head{
+    max-width:640px;
+    margin-bottom:52px;
+  }
+  .section-head h2{
+    font-size:clamp(28px,3.4vw,40px);
+    margin-top:14px;
+  }
+  .section-head p{
+    margin-top:14px;
+    color:var(--ink-soft);
+    font-size:16.5px;
+  }
+
+  .divider{
+    border:none;
+    border-top:1px solid var(--line);
+    margin:0;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about{background:var(--card);}
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:64px;
+    align-items:start;
+  }
+  .about-card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:32px;
+  }
+  .about-card h3{font-size:18px; margin-bottom:10px;}
+  .about-card p{color:var(--ink-soft); font-size:15px; margin:0;}
+  .about-list{display:flex; flex-direction:column; gap:22px;}
+  .founder-tag{
+    margin-top:26px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--forest);
+    letter-spacing:0.04em;
+    text-transform:uppercase;
+  }
+
+  /* ---------- SERVICES ---------- */
+  .services-grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .service-card{
+    background:var(--paper);
+    padding:34px 28px;
+    transition:background .25s ease;
+  }
+  .service-card:hover{background:var(--card);}
+  .service-num{
+    font-family:'JetBrains Mono', monospace;
+    font-size:12px;
+    color:var(--gold);
+    letter-spacing:0.08em;
+  }
+  .service-card h3{
+    font-size:19px;
+    margin-top:12px;
+    margin-bottom:10px;
+  }
+  .service-card p{
+    color:var(--ink-soft);
+    font-size:14.5px;
+    margin:0;
+  }
+
+  /* ---------- PROCESS ---------- */
+  .process{background:var(--forest); color:var(--paper);}
+  .process .eyebrow{color:var(--gold-soft);}
+  .process .eyebrow::before{background:var(--gold-soft);}
+  .process h2{color:var(--paper);}
+  .process .section-head p{color:rgba(250,246,236,0.72);}
+
+  .process-list{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:28px;
+  }
+  .process-step{
+    position:relative;
+    padding-top:76px;
+  }
+  .stamp{
+    position:absolute;
+    top:0; left:0;
+    width:60px; height:60px;
+    border:1.5px dashed rgba(250,246,236,0.55);
+    border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif;
+    font-weight:700;
+    font-size:20px;
+    color:var(--gold-soft);
+    transform:rotate(-8deg);
+  }
+  .process-step h3{
+    color:var(--paper);
+    font-size:17px;
+    margin-bottom:8px;
+  }
+  .process-step p{
+    color:rgba(250,246,236,0.7);
+    font-size:14px;
+    margin:0;
+  }
+
+  /* ---------- WHY / VALUES ---------- */
+  .values-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:26px;
+  }
+  .value-card{
+    border-top:2px solid var(--gold);
+    padding-top:18px;
+  }
+  .value-card h3{font-size:16.5px; margin-bottom:8px;}
+  .value-card p{color:var(--ink-soft); font-size:14px; margin:0;}
+
+  /* ---------- CONTACT ---------- */
+  .contact{background:var(--card);}
+  .contact-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:64px;
+  }
+  .contact-info-item{
+    display:flex;
+    gap:16px;
+    padding:20px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .contact-info-item:first-child{padding-top:0;}
+  .contact-icon{
+    width:38px; height:38px;
+    border-radius:50%;
+    border:1px solid var(--forest);
+    color:var(--forest);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+    font-family:'JetBrains Mono', monospace;
+    font-size:14px;
+  }
+  .contact-info-item h4{
+    margin:0 0 4px;
+    font-size:14px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--ink-soft);
+    font-weight:600;
+  }
+  .contact-info-item a, .contact-info-item div.val{
+    text-decoration:none;
+    font-family:'JetBrains Mono', monospace;
+    font-size:15.5px;
+    color:var(--ink);
+  }
+
+  form.contact-form{
+    background:var(--paper);
+    border:1px solid var(--line);
+    padding:32px;
+    border-radius:var(--radius);
+  }
+  .field{margin-bottom:18px;}
+  .field label{
+    display:block;
+    font-size:12.5px;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+    color:var(--ink-soft);
+    margin-bottom:7px;
+    font-weight:600;
+  }
+  .field input, .field select, .field textarea{
+    width:100%;
+    padding:12px 14px;
+    border:1px solid var(--line);
+    background:var(--paper);
+    border-radius:var(--radius);
+    font-family:'Work Sans', sans-serif;
+    font-size:14.5px;
+    color:var(--ink);
+  }
+  .field textarea{resize:vertical; min-height:90px;}
+  .field input:focus, .field select:focus, .field textarea:focus{
+    outline:2px solid var(--forest);
+    outline-offset:1px;
+  }
+  .contact-form .btn{width:100%; justify-content:center; border:none; cursor:pointer;}
+  .form-note{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    margin-top:12px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--ink);
+    color:rgba(250,246,236,0.75);
+    padding:48px 0 28px;
+  }
+  .footer-top{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:24px;
+    padding-bottom:28px;
+    border-bottom:1px solid rgba(250,246,236,0.15);
+  }
+  .footer-brand strong{
+    font-family:'Fraunces', serif;
+    color:var(--paper);
+    font-size:18px;
+    display:block;
+    margin-bottom:6px;
+  }
+  .footer-brand span{font-size:13px;}
+  .footer-links{display:flex; gap:28px; flex-wrap:wrap;}
+  .footer-links a{text-decoration:none; font-size:13.5px; color:rgba(250,246,236,0.75);}
+  .footer-links a:hover{color:var(--gold-soft);}
+  .footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+    padding-top:20px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:11.5px;
+    color:rgba(250,246,236,0.5);
+  }
+
+  /* ---------- REVEAL ANIM ---------- */
+  .reveal{
+    opacity:0;
+    transform:translateY(18px);
+    transition:opacity .7s ease, transform .7s ease;
+  }
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 880px){
+    nav.links{
+      position:fixed;
+      top:76px; left:0; right:0;
+      background:var(--paper);
+      flex-direction:column;
+      align-items:flex-start;
+      padding:22px 28px;
+      border-bottom:1px solid var(--line);
+      display:none;
+      gap:18px;
+    }
+    nav.links.open{display:flex;}
+    .hamburger{display:flex;}
+    .hero-grid{grid-template-columns:1fr; text-align:left;}
+    .seal-wrap{order:-1; margin-bottom:8px;}
+    .seal{width:190px; height:190px;}
+    .seal-center strong{font-size:30px;}
+    .about-grid{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:1fr 1fr;}
+    .process-list{grid-template-columns:1fr 1fr;}
+    .values-grid{grid-template-columns:1fr 1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:520px){
+    .services-grid{grid-template-columns:1fr;}
+    .process-list{grid-template-columns:1fr;}
+    .values-grid{grid-template-columns:1fr;}
+    .hero-footnote{flex-direction:column; gap:14px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="brand" href="#top">
+      <span class="brand-mark">EGG</span>
+      <span class="brand-text">
+        <strong>EGG Consultancy</strong>
+        <span>Eshetu Gudeta Geresu</span>
+      </span>
+    </a>
+    <nav class="links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#contact" class="nav-cta">Contact Us</a>
+    </nav>
+    <button class="hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <span class="eyebrow">Educational Consultancy · Ethiopia</span>
+        <h1>Your next chapter,<br><em>officially</em> underway.</h1>
+        <p class="lead">EGG — Eshetu Gudeta Geresu Educational Consultancy — helps students choose the right path, prepare a strong application, and step into their next classroom with confidence, in Ethiopia and abroad.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="tel:+251911691845">Call for a Consultation</a>
+          <a class="btn btn-outline" href="mailto:info.gp.bt@gmail.com">Email Us</a>
+        </div>
+        <div class="hero-footnote">
+          <div><strong>One-on-one counseling</strong>Personalized, not generic</div>
+          <div><strong>Local & international</strong>Universities at home and abroad</div>
+          <div><strong>Start to finish</strong>From first meeting to first day</div>
+        </div>
+      </div>
+      <div class="seal-wrap">
+        <svg class="seal" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <path id="sealCircle" d="M 140,140 m -108,0 a 108,108 0 1,1 216,0 a 108,108 0 1,1 -216,0" />
+          </defs>
+          <circle cx="140" cy="140" r="132" fill="none" stroke="#0F3D2E" stroke-width="1"/>
+          <circle cx="140" cy="140" r="108" fill="none" stroke="#C6952F" stroke-width="1.5" stroke-dasharray="2 5"/>
+          <text font-family="JetBrains Mono, monospace" font-size="11.5" letter-spacing="3" fill="#0F3D2E">
+            <textPath href="#sealCircle" startOffset="0%">EDUCATIONAL CONSULTANCY • STUDY ABROAD • ADMISSIONS •</textPath>
+          </text>
+        </svg>
+        <div class="seal-center">
+          <strong>EGG</strong>
+          <span>Est. Consultancy</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <div class="reveal">
+        <span class="eyebrow">About EGG</span>
+        <h2 style="margin-top:14px;">Guidance from someone who has walked the path.</h2>
+        <p style="margin-top:16px; color:var(--ink-soft); font-size:16px;">
+          EGG was founded by Eshetu Gudeta Geresu to give Ethiopian students clear, honest guidance at the moments that matter most: choosing a field of study, applying to the right institution, and preparing for life on a new campus. We work with each student individually, taking the time to understand their goals, grades, and circumstances before recommending a path.
+        </p>
+        <p class="founder-tag">Founder & Lead Consultant — Eshetu Gudeta Geresu</p>
+      </div>
+      <div class="about-list reveal">
+        <div class="about-card">
+          <h3>Why families choose EGG</h3>
+          <p>We sit down with every student, not just their transcript. Recommendations are built around their goals and budget, not a one-size-fits-all list of schools.</p>
+        </div>
+        <div class="about-card">
+          <h3>What we don't do</h3>
+          <p>We don't promise guaranteed admission or make decisions for the student. Our job is to prepare them to make an informed choice, and to make the process less overwhelming.</p>
+        </div>
+        <div class="about-card">
+          <h3>Who we work with</h3>
+          <p>High school graduates planning their next step, students transferring programs, and families weighing local study against studying abroad.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">What We Offer</span>
+        <h2>Support for every stage of the decision.</h2>
+        <p>From the first "what should I study" conversation to the day a student packs for orientation.</p>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="services-grid reveal">
+        <div class="service-card">
+          <span class="service-num">01</span>
+          <h3>Academic Counseling</h3>
+          <p>One-on-one sessions to identify strengths, interests, and realistic field-of-study options.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-num">02</span>
+          <h3>University & College Placement</h3>
+          <p>A shortlist of institutions — in Ethiopia and abroad — matched to the student's goals and results.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-num">03</span>
+          <h3>Test Preparation Guidance</h3>
+          <p>Structured study plans and resources for IELTS, TOEFL, SAT, and other entrance requirements.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-num">04</span>
+          <h3>Scholarship & Financial Aid</h3>
+          <p>Identifying scholarships and aid programs the student actually qualifies for, and help applying.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-num">05</span>
+          <h3>Visa & Documentation</h3>
+          <p>Guidance through the paperwork, timelines, and interviews that come with studying abroad.</p>
+        </div>
+        <div class="service-card">
+          <span class="service-num">06</span>
+          <h3>Career Guidance</h3>
+          <p>Aptitude conversations that connect a field of study to real career paths after graduation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process" id="process">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">How It Works</span>
+        <h2>Four meetings, one clear plan.</h2>
+        <p>The same process for every student, adjusted to their goals.</p>
+      </div>
+      <div class="process-list reveal">
+        <div class="process-step">
+          <div class="stamp">01</div>
+          <h3>Consultation</h3>
+          <p>We talk through goals, grades, budget, and what "the right fit" looks like for this student.</p>
+        </div>
+        <div class="process-step">
+          <div class="stamp">02</div>
+          <h3>Assessment</h3>
+          <p>We review transcripts and test scores and identify gaps to close before applying.</p>
+        </div>
+        <div class="process-step">
+          <div class="stamp">03</div>
+          <h3>Application</h3>
+          <p>We shortlist institutions, prepare documents, and submit applications on schedule.</p>
+        </div>
+        <div class="process-step">
+          <div class="stamp">04</div>
+          <h3>Departure</h3>
+          <p>Visa support, pre-departure briefing, and check-ins after the student arrives on campus.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- VALUES -->
+  <section>
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">Our Approach</span>
+        <h2>What guides every recommendation.</h2>
+      </div>
+      <div class="values-grid reveal">
+        <div class="value-card">
+          <h3>Honesty first</h3>
+          <p>We tell students when a goal is realistic and when it needs adjusting — before they spend money finding out.</p>
+        </div>
+        <div class="value-card">
+          <h3>Individual attention</h3>
+          <p>Every plan is built for one student, not copied from the last one who walked in.</p>
+        </div>
+        <div class="value-card">
+          <h3>Clear timelines</h3>
+          <p>Deadlines for tests, applications, and visas are tracked so nothing is missed.</p>
+        </div>
+        <div class="value-card">
+          <h3>Ongoing support</h3>
+          <p>The relationship doesn't end at acceptance — we check in through the first term.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap contact-grid">
+      <div class="reveal">
+        <span class="eyebrow">Get In Touch</span>
+        <h2 style="margin-top:14px;">Book your first consultation.</h2>
+        <p style="margin-top:14px; color:var(--ink-soft);">Reach out by phone or email, or send a message and we'll get back to you.</p>
+
+        <div style="margin-top:32px;">
+          <div class="contact-info-item">
+            <div class="contact-icon">☎</div>
+            <div>
+              <h4>Phone</h4>
+              <a href="tel:+251911691845">+251 91 169 1845</a><br>
+              <a href="tel:+251777396677">+251 77 739 6677</a>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-icon">✉</div>
+            <div>
+              <h4>Email</h4>
+              <a href="mailto:info.gp.bt@gmail.com">info.gp.bt@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="contact-icon">◷</div>
+            <div>
+              <h4>Consultation Hours</h4>
+              <div class="val">Mon – Sat, by appointment</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <form class="contact-form reveal" id="contactForm">
+        <div class="field">
+          <label for="fname">Full name</label>
+          <input type="text" id="fname" name="fname" required>
+        </div>
+        <div class="field">
+          <label for="fphone">Phone number</label>
+          <input type="tel" id="fphone" name="fphone" required>
+        </div>
+        <div class="field">
+          <label for="finterest">Interested in</label>
+          <select id="finterest" name="finterest">
+            <option>Studying in Ethiopia</option>
+            <option>Studying abroad</option>
+            <option>Test preparation</option>
+            <option>Scholarship guidance</option>
+            <option>Not sure yet</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="fmessage">Message</label>
+          <textarea id="fmessage" name="fmessage" placeholder="Tell us a bit about your goals..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+        <p class="form-note">This opens your email app with your message pre-filled to info.gp.bt@gmail.com.</p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <strong>EGG — Eshetu Gudeta Geresu Educational Consultancy</strong>
+        <span>Guiding students to their next classroom.</span>
+      </div>
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 EGG Educational Consultancy. All rights reserved.</span>
+      <span>+251 91 169 1845 · info.gp.bt@gmail.com</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // mobile nav toggle
+  const hamburgerBtn = document.getElementById('hamburgerBtn');
+  const navLinks = document.getElementById('navLinks');
+  hamburgerBtn.addEventListener('click', () => {
+    const isOpen = navLinks.classList.toggle('open');
+    hamburgerBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  });
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    navLinks.classList.remove('open');
+    hamburgerBtn.setAttribute('aria-expanded', 'false');
+  }));
+
+  // scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => observer.observe(el));
+
+  // contact form -> mailto
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    const name = document.getElementById('fname').value;
+    const phone = document.getElementById('fphone').value;
+    const interest = document.getElementById('finterest').value;
+    const message = document.getElementById('fmessage').value;
+    const subject = encodeURIComponent('Consultation Request — ' + name);
+    const body = encodeURIComponent(
+      'Name: ' + name + '\n' +
+      'Phone: ' + phone + '\n' +
+      'Interested in: ' + interest + '\n\n' +
+      'Message:\n' + message
+    );
+    window.location.href = 'mailto:info.gp.bt@gmail.com?subject=' + subject + '&body=' + body;
+  });
+</script>
+
+</body>
+</html>
