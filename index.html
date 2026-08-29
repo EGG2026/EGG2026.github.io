@@ -799,7 +799,25 @@
       <h2>Ready to study in Korea?</h2>
       <p>Tell us about yourself and we'll conduct a preliminary assessment of your study plans.</p>
     </div>
-    <form class="form-card" onsubmit="event.preventDefault(); alert('Thanks — this is a preview form. Connect it to your backend or form service to start receiving real applications.');">
+    <<form class="reveal" action="https://formspree.io/f/xbgjjvry" method="POST">
+  <div class="field">
+    <label for="name">Full name</label>
+    <input id="name" name="name" type="text" required>
+  </div>
+  <div class="field">
+    <label for="email">Email or phone</label>
+    <input id="email" name="email" type="text" required>
+  </div>
+  <div class="field">
+    <label for="program">Program of interest</label>
+    <input id="program" name="program" type="text" placeholder="e.g. Daejin University — AI Convergence">
+  </div>
+  <div class="field">
+    <label for="msg">A little about your background</label>
+    <textarea id="msg" name="message" rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Send inquiry →</button>
+</form>>
       <fieldset>
         <legend>Personal information</legend>
         <div class="field-grid">
